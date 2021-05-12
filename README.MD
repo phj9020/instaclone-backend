@@ -5,8 +5,11 @@ Instaclone Backend
 ## User 
 - [X] Create Account
 - [X] See Profile
-- [ ] Login
+- [X] Login
 - [ ] Edit Profile
 - [ ] Follow User
 - [ ] Unfollow User
 - [ ] Change Avatar (Image Upload)
+- [ ] Search User
+- [ ] See Followers
+- [ ] See Following
