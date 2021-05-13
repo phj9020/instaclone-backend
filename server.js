@@ -8,7 +8,7 @@ import {getUser} from "./users/users.utils";
 const PORT = process.env.PORT;
 
 // Create Server
-const server = new ApolloServer({
+const apollo = new ApolloServer({
     resolvers,
     typeDefs,
     context: async({ req }) => {
@@ -21,7 +21,11 @@ const server = new ApolloServer({
 // tell apollo server work with express server
 const app = express();
 app.use(logger("tiny"));
-server.applyMiddleware({ app });
+app.use("/static", express.static("uploads"));
+
+
+// middleware
+apollo.applyMiddleware({ app });
 
 app.listen({ port: PORT }, ()=> {
     console.log(`🚀  Server ready at http://localhost:${PORT}`);

@@ -7,16 +7,25 @@ import fs from "fs";
 
 const resolverFn = async(_, {firstName, lastName, username, email, password:newPassword, bio, avatar}, {loggedInUser}) => {
     
-    // get filename and createReadStream function from avatar
-    const {filename, createReadStream} = await avatar;
-    
-    // read Stream
-    const readStream = createReadStream();
-    // Write Stream with directory + filename 
-    const writeStream = fs.createWriteStream(process.cwd() + "/uploads/" + filename);
+    let avatarUrl = null;
+    // avatar가 존재할 때 실행 
+    if(avatar) {
+        // get filename and createReadStream function from avatar
+        const {filename, createReadStream} = await avatar;
+        
+        // create random filename in order to prevent same filename crash
+        const newFilename = `${loggedInUser.id}-${Date.now()}-${filename}`;
 
-    // pipe stream
-    readStream.pipe(writeStream);
+        // read Stream
+        const readStream = createReadStream();
+        // Write Stream with directory + filename  (경로설정)
+        const writeStream = fs.createWriteStream(process.cwd() + "/uploads/" + newFilename);
+    
+        // pipe stream (저장)
+        readStream.pipe(writeStream);
+
+        avatarUrl = `http://localhost:4000/static/${newFilename}`;
+    }
 
     let hashedPassword=null;
     
@@ -33,8 +42,8 @@ const resolverFn = async(_, {firstName, lastName, username, email, password:newP
             lastName, 
             username, 
             bio,
-            avatar: "",
             email, 
+            ...(avatarUrl && { avatar: avatarUrl }),
             ...(hashedPassword && { password: hashedPassword })
         },
     });

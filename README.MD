@@ -7,9 +7,9 @@ Instaclone Backend
 - [X] See Profile
 - [X] Login
 - [X] Edit Profile
+- [X] Change Avatar (Image Upload)
 - [ ] Follow User
 - [ ] Unfollow User
-- [ ] Change Avatar (Image Upload)
 - [ ] Search User
 - [ ] See Followers
 - [ ] See Following
