@@ -2,13 +2,14 @@ import {loadFilesSync, mergeResolvers, makeExecutableSchema, mergeTypeDefs} from
 
 // load Type definition
 const loadedTypes = loadFilesSync(`${__dirname}/**/*.typeDefs.js`);
-const typeDefs = mergeTypeDefs(loadedTypes);
+export const typeDefs = mergeTypeDefs(loadedTypes);
 
 // load resolver -> queries and mutations
 const loadedResolvers = loadFilesSync(`${__dirname}/**/*.resolvers.js`);
-const resolvers = mergeResolvers(loadedResolvers);
+export const resolvers = mergeResolvers(loadedResolvers);
 
+// * dont need to makeExecutableSchema typeDefs and resolvers
+// ** I put it in apolloServer seperately
 
-const schema = makeExecutableSchema({typeDefs, resolvers});
-
-export default schema;
+// const schema = makeExecutableSchema({typeDefs, resolvers});
+// export default schema;
