@@ -26,7 +26,7 @@ export default {
                 skip: (page - 1) * 5,
             });
             // 각 팔로잉 어레이에서 해당 유저를 가지고 있는 수를 센다 
-            const pages = await client.user.count({
+            const totalFollowers = await client.user.count({
                 where: { 
                     following : { some : { username}}
                 }
@@ -34,7 +34,7 @@ export default {
             return {
                 ok: true,
                 followers: followers,
-                totalPages: Math.ceil(pages / 5)
+                totalPages: Math.ceil(totalFollowers / 5)
             }
 
         }
