@@ -59,7 +59,22 @@ export default {
                 
             });
             return Boolean(exists);
-        
-        }
+        },
+        photos:({id},{page}) => {
+            // return client.photo.findMany({
+            //     where: {
+            //         userId: id
+            //     },
+            //     take:5,
+            //     skip: (page - 1) * 5,
+            // })
+
+            return client.user.findUnique({where: {id}}).photos(
+                {
+                    take:5,
+                    skip: (page - 1) * 5,
+                }
+            )
+        },
     }
 };
