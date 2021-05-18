@@ -20,7 +20,7 @@ Instaclone Backend
 - [X] See Hash Tags
 - [X] Search Photos
 - [X] Edit Photo
-- [ ] Like / UnLike Photo
+- [X] Like / UnLike Photo (*toggleLikes)
 - [ ] See Photo Likes
 - [ ] See Feed
 
