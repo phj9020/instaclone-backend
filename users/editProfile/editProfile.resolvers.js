@@ -2,6 +2,7 @@ import client from "../../client";
 import bcrypt from 'bcrypt';
 import {protectResolver} from "../users.utils";
 import fs from "fs";
+import { uploadPhoto } from "../../shared/shared.utils";
 
 
 
@@ -10,21 +11,24 @@ const resolverFn = async(_, {firstName, lastName, username, email, password:newP
     let avatarUrl = null;
     // avatar가 존재할 때 실행 
     if(avatar) {
+        avatarUrl = await uploadPhoto(avatar, loggedInUser.id);
+
+
+        /*
+        === file save in local server ===
         // get filename and createReadStream function from avatar
         const {filename, createReadStream} = await avatar;
-        
-        // create random filename in order to prevent same filename crash
+        //create random filename in order to prevent same filename crash
         const newFilename = `${loggedInUser.id}-${Date.now()}-${filename}`;
-
-        // read Stream
+        //read Stream 
         const readStream = createReadStream();
-        // Write Stream with directory + filename  (경로설정)
+        //Write Stream with directory + filename (경로설정) 
         const writeStream = fs.createWriteStream(process.cwd() + "/uploads/" + newFilename);
-    
-        // pipe stream (저장)
+        //pipe stream (저장) 
         readStream.pipe(writeStream);
-
         avatarUrl = `http://localhost:4000/static/${newFilename}`;
+        */
+
     }
 
     let hashedPassword=null;
