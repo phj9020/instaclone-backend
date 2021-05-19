@@ -26,14 +26,14 @@ Instaclone Backend
 - [X] See Photo Comment
 - [X] IsMine Photo (computed Fields)
 - [X] comments Photo (computed Fields: total comments)
-- [ ] Delete Photo
+- [X] Delete Photo
 
 
 ## Comments
 - [X] Comment on Photo
-- [ ] IsMine Comment (computed Fields)
+- [X] IsMine Comment (computed Fields)
+- [X] Delete Comment
 - [ ] Edit Comment
-- [ ] Delete Comment (isMine)
 
 ## Amazon S3    
 - [ ] S3 Image Upload
