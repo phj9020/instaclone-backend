@@ -1,4 +1,5 @@
 import client from "../../client";
+import { uploadToS3 } from "../../shared/shared.utils";
 import { protectResolver } from "../../users/users.utils";
 import {processHash} from "../photos.utils";
 
@@ -11,9 +12,12 @@ const resolverFn = async(_,{file, caption}, {loggedInUser}) => {
         hashtagObjs = processHash(caption);
     }
     
+    // get file url
+    const fileUrl = await uploadToS3(file, loggedInUser.id, "uploads")
+
     // save the Photo Model with the parsed hashtags
     return await client.photo.create({data: {
-        file: file,
+        file: fileUrl,
         caption: caption,
         user: {
             connect: {

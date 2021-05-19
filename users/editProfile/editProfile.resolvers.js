@@ -1,8 +1,7 @@
 import client from "../../client";
 import bcrypt from 'bcrypt';
 import {protectResolver} from "../users.utils";
-import fs from "fs";
-import { uploadPhoto } from "../../shared/shared.utils";
+import { uploadToS3 } from "../../shared/shared.utils";
 
 
 
@@ -11,7 +10,7 @@ const resolverFn = async(_, {firstName, lastName, username, email, password:newP
     let avatarUrl = null;
     // avatar가 존재할 때 실행 
     if(avatar) {
-        avatarUrl = await uploadPhoto(avatar, loggedInUser.id);
+        avatarUrl = await uploadToS3(avatar, loggedInUser.id, "avatars");
 
 
         /*
