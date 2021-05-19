@@ -22,7 +22,24 @@ export default {
                     photoId: id
                 },
             })
-        }
+        },
+        comments: ({id}) => {
+            return client.comment.count({
+                where: {
+                    photoId: id
+                }
+            })
+        },
+        isMine: async({userId}, _, {loggedInUser}) => {
+            if(!loggedInUser) {
+                return false;
+            }
+            if(userId === loggedInUser.id) {
+                return true
+            } else {
+                return false
+            }
+        },
     },
     Hashtag: {
         photos: ({id}, {page}) => {

@@ -23,8 +23,17 @@ Instaclone Backend
 - [X] Like / UnLike Photo (*toggleLikes)
 - [X] See Photo Likes
 - [X] See Feed
+- [X] See Photo Comment
+- [X] IsMine Photo (computed Fields)
+- [X] comments Photo (computed Fields: total comments)
+- [ ] Delete Photo
+
 
 ## Comments
-- [ ] Comment on Photo
+- [X] Comment on Photo
+- [ ] IsMine Comment (computed Fields)
 - [ ] Edit Comment
-- [ ] Delete Comment
+- [ ] Delete Comment (isMine)
+
+## Amazon S3    
+- [ ] S3 Image Upload
