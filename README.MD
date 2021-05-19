@@ -33,7 +33,7 @@ Instaclone Backend
 - [X] Comment on Photo
 - [X] IsMine Comment (computed Fields)
 - [X] Delete Comment
-- [ ] Edit Comment
+- [X] Edit Comment
 
 ## Amazon S3    
 - [ ] S3 Image Upload
