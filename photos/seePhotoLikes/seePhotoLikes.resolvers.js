@@ -1,4 +1,3 @@
-import { loadFiles } from "@graphql-tools/load-files";
 import client from "../../client";
 
 export default {

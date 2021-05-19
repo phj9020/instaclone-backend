@@ -22,7 +22,7 @@ Instaclone Backend
 - [X] Edit Photo
 - [X] Like / UnLike Photo (*toggleLikes)
 - [X] See Photo Likes
-- [ ] See Feed
+- [X] See Feed
 
 ## Comments
 - [ ] Comment on Photo
