@@ -36,4 +36,10 @@ Instaclone Backend
 - [X] Edit Comment
 
 ## Amazon S3    
-- [ ] S3 Image Upload
+- [X] S3 Image Upload
+
+## DMs
+- [X] See Rooms
+- [ ] Send Message (*Create Room)
+- [ ] RealTime Message
+
