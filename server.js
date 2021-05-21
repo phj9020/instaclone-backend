@@ -12,13 +12,35 @@ const PORT = process.env.PORT;
 const apollo = new ApolloServer({
     resolvers,
     typeDefs,
-    context: async({ req }) => {
-        if(req) {
+    context: async(context) => {
+        if(context.req) {
             return {
-                loggedInUser: await getUser(req.headers.token),
+                loggedInUser: await getUser(context.req.headers.token),
+            }
+        } else {
+            return {
+                // 3. console.log(context);
+                // 4. return loggedInUser inside of context=> connection => context 
+                loggedInUser: context.connection.context.loggedInUser
             }
         }
-    }
+    },
+    // 1. connect to websocket , able to see token only if user tries to connect
+    subscriptions: {
+        onConnect: async({token}) => {
+            if(!token) {
+                throw new Error("You cannot Listen")
+            }
+            
+            const loggedInUser = await getUser(token);
+
+            return {
+                // 2. this return value goes to context
+                loggedInUser: loggedInUser
+            }
+            
+        },
+    },
 });
 
 // tell apollo server work with express server
