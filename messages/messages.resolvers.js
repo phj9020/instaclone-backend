@@ -1,6 +1,22 @@
 import client from "../client";
 
 export default {
+    Message : {
+        user: ({id})=> {
+            return client.message.findUnique({
+                where: {
+                    id:id
+                },
+            }).user();
+        },
+        room: ({id})=> {
+            return client.message.findUnique({
+                where: {
+                    id:id
+                },
+            }).room();
+        }
+    },
     Room:{
         users:({id})=> {
             // return client.room.findUnique({where: {id}}).users(); 
