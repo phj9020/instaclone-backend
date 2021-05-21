@@ -13,11 +13,13 @@ const apollo = new ApolloServer({
     resolvers,
     typeDefs,
     context: async(context) => {
+        //http
         if(context.req) {
             return {
                 loggedInUser: await getUser(context.req.headers.token),
             }
         } else {
+            // websocket
             return {
                 // 3. console.log(context);
                 // 4. return loggedInUser inside of context=> connection => context 

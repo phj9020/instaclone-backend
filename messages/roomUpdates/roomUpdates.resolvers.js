@@ -32,6 +32,7 @@ export default {
                     // asyncIterator 기 trigger들을 listen한다 
                     () => pubsub.asyncIterator(NEW_MESSAGE),
                     async(payload, variables, context) => {
+                        // 방의 일원이다가 방에서 나갔을 상황 체크 
                         if(payload.roomUpdates.roomId === variables.id){
                             const room = await client.room.findFirst({
                                 where: {

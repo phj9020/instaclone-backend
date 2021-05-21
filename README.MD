@@ -44,5 +44,5 @@ Instaclone Backend
 - [X] See Room
 - [X] Computed Fields (*Seen/not Seen)
 - [X] See(READ) Message
-- [ ] RealTime Message
+- [X] RealTime Message
 
