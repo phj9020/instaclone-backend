@@ -1,4 +1,6 @@
 import client from "../../client";
+import { NEW_MESSAGE } from "../../constants";
+import pubsub from "../../pubsub";
 import { protectResolver } from "../../users/users.utils";
 
 
@@ -59,7 +61,7 @@ const resolverFn = async(_, {payload, roomId, userId}, {loggedInUser}) => {
     }
 
     // create Message & connect room with newRoom.id & connect user with loggedInUser.id
-    await client.message.create({
+    const message = await client.message.create({
         data: {
             payload: payload,
             room: {
@@ -73,6 +75,12 @@ const resolverFn = async(_, {payload, roomId, userId}, {loggedInUser}) => {
                 }
             },
         },
+    });
+    // publish an event 1. Trigger name 2. payload has to be object
+    pubsub.publish(NEW_MESSAGE, {
+        roomUpdates: {
+            ...message
+        }
     });
 
     return {
