@@ -12,5 +12,8 @@ export default {
                 return false
             }
         },
+        user: ({userId})=>{
+            return client.user.findUnique({where: {id : userId}})
+        },
     }
 }
