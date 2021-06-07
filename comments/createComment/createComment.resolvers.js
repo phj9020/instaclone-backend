@@ -21,7 +21,7 @@ const resolverFn = async(_, {photoId, payload}, {loggedInUser}) => {
     }
 
     // create comment 
-    await client.comment.create({
+    const newComment = await client.comment.create({
         data : {
             payload: payload,
             photo: {
@@ -38,7 +38,8 @@ const resolverFn = async(_, {photoId, payload}, {loggedInUser}) => {
     });
 
     return {
-        ok: true
+        ok: true,
+        id: newComment.id,
     };
 
 };
