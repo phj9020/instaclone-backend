@@ -2,7 +2,7 @@ import client from "../../client";
 import { protectResolver } from "../../users/users.utils";
 
 
-const resolverFn = async(_, {page}, {loggedInUser}) => {
+const resolverFn = async(_, {offset}, {loggedInUser}) => {
     return await client.photo.findMany({
         where: {
             OR: [
@@ -27,8 +27,8 @@ const resolverFn = async(_, {page}, {loggedInUser}) => {
         orderBy: {
             createdAt: "desc"
         },
-        take: 25,
-        skip: (page - 1) * 25,
+        take: 2,
+        skip: offset,
     })
 };
 
