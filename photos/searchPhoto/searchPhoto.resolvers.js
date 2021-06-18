@@ -2,15 +2,15 @@ import client from "../../client";
 
 export default {
     Query: {
-        searchPhoto: (_, {keyword, page}) => {
+        searchPhoto: (_, {keyword, offset}) => {
             return client.photo.findMany({
                 where : {
                     caption: {
-                        startsWith : keyword
+                        contains : keyword
                     }
                 },
-                take: 5, 
-                skip: (page - 1) * 5,
+                take: 18, 
+                skip: offset,
             })
         }
     }
