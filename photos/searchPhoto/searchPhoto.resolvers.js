@@ -9,7 +9,7 @@ export default {
                         contains : keyword
                     }
                 },
-                take: 18, 
+                take: 15, 
                 skip: offset,
             })
         }

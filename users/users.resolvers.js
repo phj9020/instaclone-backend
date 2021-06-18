@@ -60,7 +60,7 @@ export default {
             });
             return Boolean(exists);
         },
-        photos:({id},{page}) => {
+        photos:({id}) => {
             // return client.photo.findMany({
             //     where: {
             //         userId: id
@@ -70,10 +70,10 @@ export default {
             // })
 
             return client.user.findUnique({where: {id}}).photos(
-                {
-                    take:5,
-                    skip: (page - 1) * 5,
-                }
+                // {
+                //     take:5,
+                //     skip: (page - 1) * 5,
+                // }
             )
         },
     }
