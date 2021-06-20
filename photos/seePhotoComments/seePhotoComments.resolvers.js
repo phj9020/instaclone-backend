@@ -2,7 +2,7 @@ import client from "../../client";
 
 export default {
     Query: {
-        seePhotoComments: async(_, {id, page}) => {
+        seePhotoComments: async(_, {id, offset}) => {
             return await client.comment.findMany({
                 where: {
                     photoId: id
@@ -10,8 +10,8 @@ export default {
                 orderBy: {
                     createdAt: "desc"
                 },
-                take: 5,
-                skip: (page - 1) * 5
+                take: 20,
+                skip: offset,
             });
 
         }
