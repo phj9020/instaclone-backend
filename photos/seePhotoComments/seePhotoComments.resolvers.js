@@ -10,7 +10,7 @@ export default {
                 orderBy: {
                     createdAt: "desc"
                 },
-                take: 14,
+                take: 100,
                 skip: offset,
             });
 

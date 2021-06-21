@@ -6,6 +6,9 @@ const resolverFn = async(_, __, {loggedInUser}) => {
         where: {
             userId: loggedInUser.id
         },
+        orderBy: {
+            createdAt: "desc"
+        },
     });
 };
 
