@@ -30,13 +30,13 @@ export default {
                     }
             });
         }, 
-        messages: ({id}, {page})=> {
+        messages: ({id}, {offset})=> {
             return client.message.findMany({
                 where: {
                     roomId: id,
                 },
                 take: 10,
-                skip: (page - 1) * 10
+                skip: offset
             });
         },
         unreadTotal: ({id}, _, {loggedInUser}) => {
