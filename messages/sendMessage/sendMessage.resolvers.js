@@ -84,7 +84,9 @@ const resolverFn = async(_, {payload, roomId, userId}, {loggedInUser}) => {
     });
 
     return {
-        ok: true
+        ok: true,
+        id: message.id,
+        roomId: message.roomId
     }
 
 };

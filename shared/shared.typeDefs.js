@@ -5,5 +5,6 @@ export default gql`
         ok: Boolean!
         error: String
         id: Int
+        roomId: Int
     }
 `
