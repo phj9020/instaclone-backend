@@ -30,6 +30,7 @@ const apollo = new ApolloServer({
     // 1. connect to websocket , able to see token only if user tries to connect
     subscriptions: {
         onConnect: async({token}) => {
+            console.log(token);
             if(!token) {
                 throw new Error("You cannot Listen")
             }
