@@ -26,7 +26,7 @@
     "@prisma/client": "^2.23.0",
     "apollo-server-express": "^2.24.0",
     "aws-sdk": "^2.910.0",
-    "bcrypt": "^5.0.1",
+    "bcryptjs": "^2.4.3",
     "dotenv": "^9.0.2",
     "express": "^4.17.1",
     "fs-capacitor": "^6.2.0",
